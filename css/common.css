@@ -74,18 +74,12 @@ body {
 .container img {
     margin: 20px;
     width: 130px;
-    cursor: pointer;
 }
 
 
 .relative {
     position: relative;
 }
-
-/* モグラの.ana にスマホ対応 */
-.ana {
-    cursor: pointer;
-   }
 
 /* タイマーとスコアの表示欄の設定 */
 .score,
