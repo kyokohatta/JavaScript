@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1280">
+    <title>もぐらたたき</title>
+    <link rel="icon" href="images/mogu.ico">
+    <style media="screen">
+        @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
+        #game {
+            cursor: url(./images/hammer.cur_s.png) 20 20, auto;
+            width: 100%;
+        }
+
+        /* nav部分をflexに */
+        #title {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* スタートボタンの設定 */
+        #game_startend,
+        #again {
+            margin-top: 3%;
+            background: #fff;
+            padding: 13px 30px;
+            border: 3px solid #895F2C;
+            box-shadow: 0 5px 0 #895F2C;
+            border-radius: 6px;
+            display: inline-block;
+            transition: .3s;
+            margin-left: 20px;
+            width: 40%;
+            text-align: center;
+        }
+
+        #game_startend:hover,
+        #again:hover {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 #895F2C;
+            background-color: #895F2C;
+            text-decoration: none;
+        }
+
+        /* ロゴさいず */
+        #logo img {
+            width: 70%;
+            transition-duration: 0.3s;
+
+        }
+
+        #logo img:hover {
+            transform: scale(1.2) !important;
+            transition-duration: 0.3s;
+        }
+
+
+        body {
+            margin: 0px auto;
+            background-position: center;
+        }
+
+        /* モグラの穴の位置 */
+        .container {
+            height: 100px;
+            margin: 20px auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container img {
+            margin: 20px;
+            width: 100px;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .field {
+            margin: 40px;
+        }
+
+        .score,
+        .timer {
+            font-size: 2rem;
+            text-align: center;
+            margin-top: 5%;
+            margin-left: 5%;
+            color: #895F2C;
+            font-family: 'Irish Grover', cursive;
+        }
+
+        #score,
+        #timer {
+            font-weight: bold;
+            font-size: 3.5rem;
+            color: #895F2C;
+            padding-left: 3%;
+            font-family: 'Irish Grover', cursive;
+        }
+
+        p {
+            color: #895F2C;
+            margin-top: 3%;
+            background: #fff;
+            padding: 13px 30px;
+            border: 3px solid #895F2C;
+            box-shadow: 0 5px 0 #895f2c;
+            border-radius: 6px;
+            display: inline-block;
+            transition: .3s;
+            margin-left: 20px;
+        }
+
+        #score_timer {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="field">
+        <div id="title">
+            <a href="index.html">
+                <div id="logo">
+                    <img src="images/title.png" alt="もぐら叩き">
+                </div>
+            </a>
+            <div><a href="#game"><img src="images/start.png" alt="スタート" id="game_startend"></a></div>
+            <div><img src="images/again.png" alt="もう一度" id="again"></div>
+
+        </div><!-- /.title -->
+        <div id="game">
+            <div class="container">
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+            </div>
+            <div class="container">
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+            </div>
+            <div class="container">
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+            </div>
+            <div class="container">
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+            </div>
+            <div id="score_timer">
+                <div class="score">
+                    <label>SCORE</label><a id="score"></a>
+                </div>
+                <div class="timer">
+                    <label>COUNT</label><a id="timer">20</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    'use strict';
+    /** カウントダウンタイマーfunction
+   * @ time -- 何秒からカウントダウンするか
+   * 1秒ごとに0になるまで数字が減っていく
+    */
+    function timer(time) {
+        let count = time;
+        let id = setInterval(function () {
+            count--;
+            document.getElementById('timer').textContent = count;
+            if (count <= 0) {
+                clearInterval(id)
+            };
+        }, 1000);
+    }
+
+    // スコア表示の設定
+    let score = 0;
+    let scoreText = document.getElementById("score");
+    scoreText.textContent = score;
+
+
+    //モグラの雛型設計
+    class Mogura {
+        constructor(index) {
+            this.index = index;
+            //     this.img = this.normalImg;
+            this.normalImg = "images/mogu2.png";
+            this.abnormalImg = "images/mogu4.png";
+            this.itaiImg = "images/mogu3.png";
+            this.kakusuImg = "images/mogu1.png";
+            this.hit = false; // 初期設定：叩けない状態
+            this.visility = false; // もぐらの飛び出し状態
+            this.abnormal = false; // 叩いたらスコアマイナスの画像が表示されているかどうか
+        }
+
+    }
+
+    // モグラオブジェクトを32個作った
+    const moguras = [];
+
+    for (let i = 0; i < 32; i++) {
+        moguras.push(new Mogura(i));
+    }
+
+    // HTMLの32個の('.ana')のついたタグを選択
+    // それぞれのsrcに kakusuImg を入れる
+    const anaGroup = document.querySelectorAll('.ana');
+
+    anaGroup.forEach(function (item, index) {
+        item.src = moguras[index].kakusuImg;
+    });
+
+
+
+    // モグラが飛び出しているとこをクリックした時、「モグライタイ」画像に変え、moguras[i].hit = true;
+    // 飛び出したモグラは500ms後に隠れてる画像に戻し、moguras[i].hit = false;に戻す。
+    for (let i = 0; i < anaGroup.length; i++) {
+        anaGroup[i].onclick = function () {
+            if (moguras[i].visility === true) {
+                anaGroup[i].src = moguras[i].itaiImg;
+                moguras[i].hit = true;
+                score++;
+                scoreText.innerHTML = score;
+
+                // 500ミリ秒後に消える
+                setTimeout(function () {
+                    anaGroup[i].src = moguras[i].kakusuImg;
+                    moguras[i].hit = false;
+                }, 500);
+            } else if (moguras[i].abnormal === true) {
+                anaGroup[i].src = moguras[i].itaiImg;
+                moguras[i].hit = true;
+                score = score - 2;
+                scoreText.innerHTML = score;
+
+                // 500ミリ秒後に消える
+                setTimeout(function () {
+                    anaGroup[i].src = moguras[i].kakusuImg;
+                    moguras[i].hit = false;
+                }, 500);
+
+            }
+        }
+    }
+
+    /**
+        // ゲームのスタートとストップ('game_startend'をクリックしたらスタート)
+        // スタートボタンを押すと20秒のカウントダウンが始まる
+        // もぐらがランダムな穴から飛び出す
+        // ２０秒後にゲームが終わる
+        */
+    document.getElementById('game_startend').onclick = function () {
+
+        // カウントダウンタイマーに切り替わる
+        document.getElementById('timer').textContent = timer(20)
+
+        // もぐらが1000msごとにひょこり、800msごとに隠れる
+        // 飛び出している間は.visility = trueとなり、モグラが叩ける。
+        // 800ms後にモグラが隠れて、.visility = falseとなり、モグラが叩けない。
+        let moguraGenerator = setInterval(function () {
+            let num = Math.floor(Math.random() * anaGroup.length);
+            anaGroup[num].src = moguras[num].normalImg;
+            moguras[num].visility = true;
+
+            setTimeout(function () {
+                anaGroup[num].src = moguras[num].kakusuImg;
+                moguras[num].visility = false;
+            }, 600);
+
+        }, 1000);
+
+        let moguraGenerator2 = setInterval(function () {
+            let num2 = Math.floor(Math.random() * anaGroup.length);
+            anaGroup[num2].src = moguras[num2].normalImg;
+            moguras[num2].visility = true;
+
+            setTimeout(function () {
+                anaGroup[num2].src = moguras[num2].kakusuImg;
+                moguras[num2].visility = false;
+            }, 600);
+
+        }, 800);
+
+        let moguraGenerator3 = setInterval(function () {
+            let num3 = Math.floor(Math.random() * anaGroup.length);
+            anaGroup[num3].src = moguras[num3].abnormalImg;
+            moguras[num3].abnormal = true;
+
+            setTimeout(function () {
+                anaGroup[num3].src = moguras[num3].kakusuImg;
+                moguras[num3].abnormal = false;
+            }, 600);
+
+        }, 1200);
+
+
+
+
+
+        // ゲーム終了時のアクション
+        // スタートをクリックしてから20秒後にゲーム終了「スタート」が「おわり」に変わる
+        // 25秒後に「もう一度やる」ボタンを表示
+        setTimeout(function () {
+            let game_end = document.getElementById('game_startend');
+            game_end.src = "images/timeout.png";
+            game_end.style.backgroundColor = "#895F2C";
+            clearInterval(moguraGenerator);
+            clearInterval(moguraGenerator2);
+            clearInterval(moguraGenerator3);
+            document.getElementById('timer').textContent = '0';
+            window.alert(`あなたの得点は${score}点でした`)
+        }, 20000)
+    }
+
+    // もう一度ボタンをクリックしたらリロード
+    document.getElementById('again').onclick = function () {
+        location.reload();
+    }
+
+</script>
+
+</html>
+
+
+<!-- 修正時刻: Wed 2022/03/23 14:12:41 -->

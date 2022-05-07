@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1280">
+    <title>もぐらたたき</title>
+    <link rel="icon" href="images/mogu.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style media="screen">
+        @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
+        body {
+            background-color: #8daa69;
+        }
+
+        /* title設定 */
+        h1 {
+            margin: 5% auto 0;
+            text-align: center;
+        }
+
+        h1 img {
+            width: 60%;
+        }
+
+
+        /* 横並び設定 */
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin: 3% auto;
+        }
+
+        .gameinfo {
+            width: 40%;
+        }
+
+        .gameinfo img {
+            text-align: center;
+            display: block;
+            width: 90%;
+        }
+
+        nav {
+            width: 50%;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav img {
+            text-align: center;
+            width: 80%;
+            display: block;
+            margin: 0;
+        }
+
+        .wrapper img {
+            transition-duration: 0.3s;
+        }
+
+        .wrapper img:hover {
+            transform: scale(1.2) !important;
+            transition-duration: 0.3s;
+        }
+
+
+        /* ゲーム説明詳細画面の設定 */
+        .gameinfo_big {
+            text-align: center;
+            margin-top: -30%;
+            z-index: 9;
+        }
+
+        .gameinfo_big img {
+            width: 80%;
+            /* z-index: 9; */
+        }
+
+        .none {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="field">
+        <h1>
+            <img class="animate__animated animate__bounceInDown animate__delay-0.5s" src="images/title.png"
+                alt="もぐら叩き"><br>
+        </h1>
+    </div>
+    <div class="wrapper">
+        <div class="gameinfo">
+            <img class="animate__animated animate__bounceInDown animate__delay-2s torisetsu" src="images/gameinfo.png"
+                alt="ゲームの説明">
+        </div>
+        <nav>
+            <a href="shokyu.html"><img class="animate__animated animate__bounceInDown animate__delay-2s"
+                    src="images/level1.png" alt="初級"></a>
+            <a href="chukyu.html"><img class="animate__animated animate__bounceInDown animate__delay-2s"
+                    src="images/level2.png" alt="中級"></a>
+            <a href="jokyu.html"><img class="animate__animated animate__bounceInDown animate__delay-2s"
+                    src="images/level3.png" alt="上級"></a>
+            <a href="cho_jokyu.html"><img class="animate__animated animate__bounceInDown animate__delay-2s"
+                    src="images/customtime2.png" alt="タイムアタック"></a>
+        </nav>
+    </div>
+    <div class="gameinfo_big none">
+        <img class="animate__bounceInUp animate__bounceOutUp" src="images/gameinfo_big.png" alt="ゲームの説明">
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    'use strict';
+
+    // ゲームの説明を押すと、詳細画面に切り替わる
+    // hasClass('open') がfalseのとき（初期設定）詳細画面に切り替えてaddClass('open')
+    // hasClass('open') がtrueのときもとに戻す
+    $(function () {
+        $('.torisetsu').click(function () {
+            if ($(this).hasClass('open') == false) {
+                $(this).attr('src', 'images/gameinfo_big.png').addClass('open');
+                $(this).css('width', '100%').css('transition', 'ease-in-out');
+                $('.gameinfo').css('width', '120%');
+            } else {
+                $(this).attr('src', 'images/gameinfo.png').removeClass('open');
+                $(this).css('width', '90%');
+                $('.gameinfo').css('width', '40%');
+            }
+        });
+    });
+
+
+</script>
+
+</html>
+
+
+<!-- 修正時刻: Wed 2022/03/23 14:12:41 -->

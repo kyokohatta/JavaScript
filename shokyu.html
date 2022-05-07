@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1280">
+    <title>もぐらたたき</title>
+    <link rel="icon" href="images/mogu.ico">
+    <link rel="stylesheet" href="css/common.css">
+
+</head>
+
+<body>
+
+    <div class="field">
+        <div id="game">
+            <div class="container">
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+            </div>
+            <div class="container">
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+            </div>
+            <div class="container">
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+                <div class="relative">
+                    <img class="ana" src="images/mogu1.png">
+                </div>
+            </div>
+        </div><!-- /.game -->
+        <nav id="nav">
+            <div id="title">
+                <a href="index.html">
+                    <div id="logo">
+                        <img src="images/title.png" alt="もぐら叩き">
+                    </div>
+                </a>
+                <br>
+                <div><img src="images/start.png" alt="スタート" id="game_startend"></div>
+                <div><img src="images/again.png" alt="もう一度" id="again"></div>
+
+            </div>
+
+            <div id="score_timer">
+                <div class="score">
+                    <label>SCORE</label><a id="score"></a>
+                </div><br>
+                <div class="timer">
+                    <label>COUNT</label><a id="timer">20</a>
+                </div>
+            </div>
+
+        </nav>
+
+
+    </div><!-- /.field -->
+
+</body>
+<script>
+    'use strict';
+    /** カウントダウンタイマーfunction
+   * @ time -- 何秒からカウントダウンするか
+   * 1秒ごとに0になるまで数字が減っていく
+    */
+    function timer(time) {
+        let count = time;
+        let id = setInterval(function () {
+            count--;
+            document.getElementById('timer').textContent = count;
+            if (count <= 0) {
+                clearInterval(id)
+            };
+        }, 1000);
+    }
+
+    // スコア表示の設定
+    let score = 0;
+    let scoreText = document.getElementById("score");
+    scoreText.textContent = score;
+
+
+    //モグラの雛型設計
+    class Mogura {
+        constructor(index) {
+            this.index = index;
+            //     this.img = this.normalImg;
+            this.normalImg = "images/mogu2.png";
+            this.itaiImg = "images/mogu3.png";
+            this.kakusuImg = "images/mogu1.png";
+            this.hit = false; // 初期設定：叩けない状態
+            this.visility = false; // もぐらの飛び出し状態
+        }
+
+    }
+
+    // モグラオブジェクトを９個作った
+    const moguras = [];
+
+    for (let i = 0; i < 9; i++) {
+        moguras.push(new Mogura(i));
+    }
+
+    // HTMLの９個の('.ana')のついたタグを選択
+    // それぞれのsrcに kakusuImg を入れる
+    const anaGroup = document.querySelectorAll('.ana');
+
+    anaGroup.forEach(function (item, index) {
+        item.src = moguras[index].kakusuImg;
+    });
+
+
+
+    // moguras[i].visility === true の時だけ、モグラを叩けるfunction
+    // モグラが飛び出しているとこをクリックした時、「モグライタイ」画像に変え、
+    // moguras[i].hit = true;
+    // 飛び出したモグラは500ms後に隠れてる画像に戻し
+    // moguras[i].hit = false;に戻す。
+    for (let i = 0; i < anaGroup.length; i++) {
+        anaGroup[i].onclick = function () {
+            if (moguras[i].visility === true) {
+                anaGroup[i].src = moguras[i].itaiImg;
+                moguras[i].hit = true;
+                score++;
+                scoreText.innerHTML = score;
+
+                // 500ミリ秒後に消える
+                setTimeout(function () {
+                    anaGroup[i].src = moguras[i].kakusuImg;
+                    moguras[i].hit = false;
+                }, 500);
+            }
+        }
+    }
+
+    /**
+        // ゲームのスタートとストップ('game_startend'をクリックしたらスタート)
+        // スタートボタンを押すと20秒のカウントダウンが始まる
+        // もぐらがランダムな穴から飛び出す
+        // ２０秒後にゲームが終わる
+        */
+    document.getElementById('game_startend').onclick = function () {
+
+        // カウントダウンタイマーに切り替わる
+        document.getElementById('timer').textContent = timer(20)
+
+        // もぐらが1000msごとにひょこり、800msごとに隠れる
+        // 飛び出している間は.visility = trueとなり、モグラが叩ける。
+        // 800ms後にモグラが隠れて、.visility = falseとなり、モグラが叩けない。
+        let moguraGenerator = setInterval(function () {
+            let num = Math.floor(Math.random() * anaGroup.length);
+            anaGroup[num].src = moguras[num].normalImg;
+            moguras[num].visility = true;
+
+            setTimeout(function () {
+                anaGroup[num].src = moguras[num].kakusuImg;
+                moguras[num].visility = false;
+            }, 800);
+
+        }, 1000);
+
+
+        // ゲーム終了時のアクション
+        // スタートをクリックしてから20秒後にゲーム終了「スタート」が「おわり」に変わる
+        // 20秒後に総得点がアラートで表示される。
+        setTimeout(function () {
+            let game_end = document.getElementById('game_startend');
+            game_end.src = "images/timeout.png";
+            game_end.style.backgroundColor = "#895F2C";
+            clearInterval(moguraGenerator);
+            document.getElementById('timer').textContent = '0';
+            window.alert(`あなたの得点は${score}点でした`)
+        }, 20000)
+    }
+
+    // もう一度ボタンをクリックしたらリロード
+    document.getElementById('again').onclick = function () {
+        location.reload();
+    }
+
+</script>
+
+</html>
+
+
+<!-- 修正時刻: Wed 2022/03/23 14:12:41 -->
