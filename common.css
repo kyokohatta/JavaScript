@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
+/* ===========カーソルの設定=========== */
+#game {
+    cursor: url(../images/hammer.png) 40 40, auto;
+}
+
+/* =========== navメニュー内の設定 =========== */
+
+/* ディスプレイを分ける */
+.field {
+    display: flex;
+    justify-content: space-between;
+    margin: 4%;
+}
+#game {
+    width: 60%;
+}
+#nav {
+    width: 40%;
+    text-align: center;
+    margin-top: 5%;
+}
+/* スタートボタンの設定 */
+#game_startend,
+#again {
+    margin-top: 3%;
+    background: #fff;
+    padding: 13px 30px;
+    border: 3px solid #895F2C;
+    box-shadow: 0 5px 0 #895F2C;
+    border-radius: 6px;
+    display: inline-block;
+    transition: .3s;
+    margin-left: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+#game_startend:hover,
+#again:hover {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 #895F2C;
+    background-color: #895F2C;
+    text-decoration: none;
+}
+
+/* ロゴさいず */
+#logo img {
+    width: 100%;
+    transition-duration: 0.3s;
+}
+#logo img:hover {
+    transform: scale(1.2) !important;
+    transition-duration: 0.3s;
+}
+
+body {
+    margin: 0px auto;
+    background-position: center;
+}
+
+/* モグラ1行の余白設定 */
+.container {
+    width: 520px;
+    height: 120px;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+}
+
+.container img {
+    margin: 20px;
+    width: 130px;
+}
+
+
+.relative {
+    position: relative;
+}
+
+/* モグラの.ana にスマホ対応 */
+.ana {
+    cursor: pointer;
+   }
+
+/* タイマーとスコアの表示欄の設定 */
+.score,
+.timer {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 5%;
+    color: #895F2C;
+    font-family: 'Irish Grover', cursive;
+}
+
+#score,
+#timer {
+    font-weight: bold;
+    font-size: 3.5rem;
+    color: #895F2C;
+    padding-left: 3%;
+    font-family: 'Irish Grover', cursive;
+}
+
+p {
+    color: #895F2C;
+    margin-top: 3%;
+    background: #fff;
+    padding: 13px 30px;
+    border: 3px solid #895F2C;
+    box-shadow: 0 5px 0 #895f2c;
+    border-radius: 6px;
+    display: inline-block;
+    transition: .3s;
+    margin-left: 20px;
+}
+
+p>img {
+    width: 40%;
+}
+
+#score_timer {
+    display: flex;
+    justify-content: center;
+}
