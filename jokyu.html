@@ -315,31 +315,63 @@
 
     // モグラが飛び出しているとこをクリックした時、「モグライタイ」画像に変え、moguras[i].hit = true;
     // 飛び出したモグラは500ms後に隠れてる画像に戻し、moguras[i].hit = false;に戻す。
-    for (let i = 0; i < anaGroup.length; i++) {
-        anaGroup[i].onclick = function () {
-            if (moguras[i].visility === true) {
-                anaGroup[i].src = moguras[i].itaiImg;
-                moguras[i].hit = true;
-                score++;
-                scoreText.innerHTML = score;
+    if (document.addEventListener) {
+        var _click = (window.ontouchstart === undefined) ? 'click' : 'touchstart';
+        for (let i = 0; i < anaGroup.length; i++) {
+            anaGroup[i].addEventListener(_click, function () {
+                if (moguras[i].visility === true) {
+                    anaGroup[i].src = moguras[i].itaiImg;
+                    moguras[i].hit = true;
+                    score++;
+                    scoreText.innerHTML = score;
 
-                // 500ミリ秒後に消える
-                setTimeout(function () {
-                    anaGroup[i].src = moguras[i].kakusuImg;
-                    moguras[i].hit = false;
-                }, 500);
-            } else if (moguras[i].abnormal === true) {
-                anaGroup[i].src = moguras[i].itaiImg;
-                moguras[i].hit = true;
-                score = score - 2;
-                scoreText.innerHTML = score;
+                    // 500ミリ秒後に消える
+                    setTimeout(function () {
+                        anaGroup[i].src = moguras[i].kakusuImg;
+                        moguras[i].hit = false;
+                    }, 500);
+                } else if (moguras[i].abnormal === true) {
+                    anaGroup[i].src = moguras[i].itaiImg;
+                    moguras[i].hit = true;
+                    score = score - 2;
+                    scoreText.innerHTML = score;
 
-                // 500ミリ秒後に消える
-                setTimeout(function () {
-                    anaGroup[i].src = moguras[i].kakusuImg;
-                    moguras[i].hit = false;
-                }, 500);
+                    // 500ミリ秒後に消える
+                    setTimeout(function () {
+                        anaGroup[i].src = moguras[i].kakusuImg;
+                        moguras[i].hit = false;
+                    }, 500);
 
+                }
+            }, false);
+        }
+    } else if (document.attachEvent) {
+        for (let i = 0; i < anaGroup.length; i++) {
+            anaGroup[i].onclick = function () {
+                if (moguras[i].visility === true) {
+                    anaGroup[i].src = moguras[i].itaiImg;
+                    moguras[i].hit = true;
+                    score++;
+                    scoreText.innerHTML = score;
+
+                    // 500ミリ秒後に消える
+                    setTimeout(function () {
+                        anaGroup[i].src = moguras[i].kakusuImg;
+                        moguras[i].hit = false;
+                    }, 500);
+                } else if (moguras[i].abnormal === true) {
+                    anaGroup[i].src = moguras[i].itaiImg;
+                    moguras[i].hit = true;
+                    score = score - 2;
+                    scoreText.innerHTML = score;
+
+                    // 500ミリ秒後に消える
+                    setTimeout(function () {
+                        anaGroup[i].src = moguras[i].kakusuImg;
+                        moguras[i].hit = false;
+                    }, 500);
+
+                }
             }
         }
     }
