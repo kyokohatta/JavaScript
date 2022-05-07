@@ -81,6 +81,11 @@ body {
     position: relative;
 }
 
+/* モグラの.ana にスマホ対応 */
+.ana {
+    cursor: pointer;
+   }
+
 /* タイマーとスコアの表示欄の設定 */
 .score,
 .timer {
