@@ -74,6 +74,7 @@ body {
 .container img {
     margin: 20px;
     width: 130px;
+    cursor: pointer;
 }
 
 
