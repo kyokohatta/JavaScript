@@ -137,7 +137,7 @@
     // 飛び出したモグラは500ms後に隠れてる画像に戻し
     // moguras[i].hit = false;に戻す。
     for (let i = 0; i < anaGroup.length; i++) {
-        anaGroup[i].ontouchend = function () {
+        anaGroup[i].onclick = function () {
             if (moguras[i].visility === true) {
                 anaGroup[i].src = moguras[i].itaiImg;
                 moguras[i].hit = true;
